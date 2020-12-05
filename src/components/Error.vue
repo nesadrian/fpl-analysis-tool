@@ -5,7 +5,7 @@
 
 <script>
   export default {
-    name: 'ErrorPage',
+    name: 'Error',
     props: {
       msg: String
     }
