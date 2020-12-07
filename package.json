@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.0",
-    "vue": "^3.0.4"
+    "vue": "^3.0.4",
+    "vue-spinner": "^1.0.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.9",
