@@ -4,7 +4,7 @@
       <Error msg="Missing manager ID" />
     </div>
     <div v-else>
-      <h1>Main</h1>
+      <h1>{{ managerId }}</h1>
     </div>
   </main>
 </template>
@@ -14,12 +14,24 @@ import Error from '../components/Error'
 
 export default {
   name: 'HomePage',
+  data() {
+    return {
+      loading: false
+    }
+  },
   components: {
     Error,
   },
-  data() {
-    return {
-      managerId: process.env.VUE_APP_MANAGER_ID
+  props: {
+    managerId: String
+  },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      this.loading = true
+      
     }
   }
 }

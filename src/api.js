@@ -1,7 +1,9 @@
+import { managerDataGeneralMock } from './mock'
+const isDev = process.env.NODE_ENV === 'development';
 const baseURL = 'https://fantasy.premierleague.com/api/'
 
-const getManagerGeneral = (managerId) => fetch(`${baseURL}entry/${managerId}/`).then(res => res.json())
+const getManagerDataGeneral = managerId => isDev ? managerDataGeneralMock : fetch(`${baseURL}entry/${managerId}/`).then(res => res.json())
 
-module.exports = {
-  getManagerGeneral
+export {
+  getManagerDataGeneral
 }
