@@ -6,7 +6,7 @@
   </template>
   <template v-else>
     <Header :firstname=data.player_first_name :lastname=data.player_last_name />
-    <HomePage :managerId=managerId />
+    <HomePage :managerId=managerId :dataManagerGeneral="data"/>
     <Footer />
   </template>
 </template>

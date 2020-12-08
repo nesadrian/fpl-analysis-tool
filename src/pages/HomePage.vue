@@ -1,16 +1,11 @@
 <template>
   <main>
-    <div v-if="!managerId">
-      <Error msg="Missing manager ID" />
-    </div>
-    <div v-else>
-      <h1>{{ managerId }}</h1>
-    </div>
+    <Card />
   </main>
 </template>
 
 <script>
-import Error from '../components/Error'
+import Card from '../components/Card'
 
 export default {
   name: 'HomePage',
@@ -20,10 +15,11 @@ export default {
     }
   },
   components: {
-    Error,
+    Card
   },
   props: {
-    managerId: String
+    managerId: String,
+    dataManagerGeneral: Object
   },
   created() {
     this.fetchData()
