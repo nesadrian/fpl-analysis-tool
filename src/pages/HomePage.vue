@@ -1,7 +1,9 @@
 <template>
   <main>
     <Card />
-    <LineChart :chartSeries="chartDataManagerHistory.series" :chartOptions="chartDataManagerHistory.chartOptions"/>
+    <section>
+      <LineChart :chartSeries="chartDataManagerHistory.series" :chartOptions="chartDataManagerHistory.chartOptions"/>
+    </section>
   </main>
 </template>
 
@@ -15,7 +17,7 @@ export default {
   name: 'HomePage',
   data() {
     return {
-      loading: false,
+      loadingChart: false,
       dataManagerHistory: undefined,
       chartDataManagerHistory: undefined
     }
@@ -33,11 +35,11 @@ export default {
   },
   methods: {
     async fetchData() {
-      this.loading = true
+      this.loadingChart = true
       const data = await getDataManagerHistory(this.managerId)
       this.dataManagerHistory = data
       this.chartDataManagerHistory = getChartDataFromHistory(this.dataManagerHistory.current)
-      this.loading = false
+      this.loadingChart = false
     }
   }
 }

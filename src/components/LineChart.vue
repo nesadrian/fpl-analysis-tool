@@ -4,7 +4,7 @@
     type="line"
     :options="chartOptions"
     :series="chartSeries"
-  ></VueApexCharts>
+  />
 </template>
 
 <script>
