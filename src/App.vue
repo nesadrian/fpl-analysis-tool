@@ -5,8 +5,7 @@
     </div>
   </template>
   <template v-else>
-    <h1>{{ data }}</h1>
-    <Header />
+    <Header :firstname=data.player_first_name :lastname=data.player_last_name />
     <HomePage :managerId=managerId />
     <Footer />
   </template>
@@ -25,6 +24,7 @@ export default {
     return {
       loading: false,
       managerId: process.env.VUE_APP_MANAGER_ID,
+      data: undefined
     }
   },
   components: {
@@ -39,8 +39,7 @@ export default {
   methods: {
     async fetchData () {
       this.loading = true
-      const data = await getManagerDataGeneral(this.managerId)
-      console.log(data)
+      this.data = await getManagerDataGeneral(this.managerId)
       this.loading = false
     }
   }

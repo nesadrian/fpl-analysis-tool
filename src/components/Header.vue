@@ -1,12 +1,16 @@
 <template>
   <header>
-    <h1>Header</h1>
+    <h1>{{ `${firstname} ${lastname}` }}</h1>
   </header>
 </template>
 
 <script>
 export default {
-  name: "Header"
+  name: "Header",
+  props: {
+    firstname: String,
+    lastname: String
+  }
 }
 
 </script>
