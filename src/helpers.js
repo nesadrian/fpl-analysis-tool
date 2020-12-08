@@ -10,14 +10,19 @@ const getChartDataFromHistory = (history) => {
         categories: []
       },
       yaxis: {
-        reversed: true
+        reversed: true,
+        labels: {
+          formatter: function(val) {
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          }
+        }
       }
     },
     series: [
       {
         name: "Overall Rank",
         data: []
-      }
+      },
     ]
   }
   history.forEach(gameweek => {
