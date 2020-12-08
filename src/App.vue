@@ -16,7 +16,7 @@ import HomePage from './pages/HomePage.vue'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
-import { getManagerDataGeneral } from './api'
+import { getDataManagerGeneral } from './api'
 
 export default {
   name: 'App',
@@ -39,7 +39,7 @@ export default {
   methods: {
     async fetchData () {
       this.loading = true
-      this.data = await getManagerDataGeneral(this.managerId)
+      this.data = await getDataManagerGeneral(this.managerId)
       this.loading = false
     }
   }
