@@ -1,8 +1,23 @@
+:root {
+  --main-color: blue
+}
+
 #app {
   width: 100vw;
   height: 100vh;
 }
 
+/* Card */
+.card-container {
+  height: 100px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-color);
+}
+
+/* Loader */
 .loader-container {
   height: 100%;
   width: 100%;
