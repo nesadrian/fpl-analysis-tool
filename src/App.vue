@@ -5,6 +5,7 @@
     </div>
   </template>
   <template v-else>
+    <Sidebar />
     <HomePage :managerId=managerId :dataManagerGeneral="data"/>
     <Footer />
   </template>
@@ -13,6 +14,7 @@
 <script>
 import HomePage from './pages/HomePage.vue'
 //import Header from './components/Header'
+import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
 import { getDataManagerGeneral } from './api'
@@ -28,6 +30,7 @@ export default {
   },
   components: {
     HomePage,
+    Sidebar,
     //Header,
     Footer,
     MoonLoader
