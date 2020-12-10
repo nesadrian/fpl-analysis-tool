@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main className="main-container main-container--home">
     <Card :title="'Overall Rank'" :value="dataManagerGeneral.summary_overall_rank" />
     <Card :title="'Gameweek Rank'" :value="dataManagerGeneral.summary_event_rank" />
     <Card :title="'Overall Points'" :value="dataManagerGeneral.summary_overall_points" />
