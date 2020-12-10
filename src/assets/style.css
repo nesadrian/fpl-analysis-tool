@@ -1,5 +1,12 @@
 :root {
-  --main-color: blue
+  --bg-color-main: #2A2B49;
+  --bg-color-dark: #1B203D;
+  --bg-color-light: #272C4A;
+  --txt-color-main: #666882;
+  --txt-color-dark: #3B415F;
+  --txt-color-light: #CCD0D4;
+  --txt-color-green: #4C9F87;
+  --txt-color-red: #E74261;
 }
 
 #app {
