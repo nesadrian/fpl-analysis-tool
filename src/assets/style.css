@@ -16,12 +16,36 @@
 
 /* Card */
 .card-container {
-  height: 100px;
-  width: 200px;
+  height: 175px;
+  width: 175px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--main-color);
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px;
+  background-color: var(--bg-color-light);
+  border-radius: 5px;
+}
+
+.card__title {
+  color: var(--txt-color-main);
+  font-size: 20px;
+}
+
+.card__value {
+  color: var(--txt-color-light);
+  font-size: 35px;
+}
+
+.card__valueDiff {
+  font-size: 17.5px;
+}
+
+.card__valueDiff--positive {
+  color: var(--txt-color-green);
+}
+
+.card__valueDiff--negative {
+  color: var(--txt-color-red);
 }
 
 /* Loader */

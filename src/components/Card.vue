@@ -1,8 +1,8 @@
 <template>
   <section className="card-container">
-    <h1>{{ title }}</h1>
-    <h1>{{ value }}</h1>
-    <h1>{{ valueDiff }}</h1>
+    <h1 className="card__title">{{ title }}</h1>
+    <h1 className="card__value">{{ value }}</h1>
+    <h1 className="card__valueDiff">{{ valueDiff }}</h1>
   </section>
 </template>
 
