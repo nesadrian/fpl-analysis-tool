@@ -5,7 +5,6 @@
     </div>
   </template>
   <template v-else>
-    <Header :firstname=data.player_first_name :lastname=data.player_last_name />
     <HomePage :managerId=managerId :dataManagerGeneral="data"/>
     <Footer />
   </template>
@@ -13,7 +12,7 @@
 
 <script>
 import HomePage from './pages/HomePage.vue'
-import Header from './components/Header'
+//import Header from './components/Header'
 import Footer from './components/Footer'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
 import { getDataManagerGeneral } from './api'
@@ -29,7 +28,7 @@ export default {
   },
   components: {
     HomePage,
-    Header,
+    //Header,
     Footer,
     MoonLoader
   },

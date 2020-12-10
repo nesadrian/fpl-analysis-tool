@@ -1,10 +1,12 @@
 <template>
-  <VueApexCharts
-    width="500"
-    type="line"
-    :options="chartOptions"
-    :series="chartSeries"
-  />
+  <section>
+    <VueApexCharts
+      width="600"
+      type="line"
+      :options="chartOptions"
+      :series="chartSeries"
+    />
+  </section>
 </template>
 
 <script>
