@@ -1,5 +1,6 @@
 <template>
   <main className="main-container main-container--home">
+    {{ this.todos }}
     <Title text="Dashboard" />
     <Card :title="'Overall Rank'" :value="dataManagerGeneral.summary_overall_rank" />
     <Card :title="'Overall Points'" :value="dataManagerGeneral.summary_overall_points" />
@@ -44,6 +45,11 @@ export default {
       this.dataManagerHistory = data
       this.chartDataManagerHistory = getChartDataFromHistory(this.dataManagerHistory.current)
       this.loadingChart = false
+    }
+  },
+  computed: {
+    todos() {
+      return this.$store.getters.getTodos;
     }
   }
 }

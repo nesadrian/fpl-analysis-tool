@@ -12,7 +12,8 @@
     "core-js": "^3.8.0",
     "vue": "^3.0.4",
     "vue-spinner": "^1.0.4",
-    "vue3-apexcharts": "^1.1.1"
+    "vue3-apexcharts": "^1.1.1",
+    "vuex": "^4.0.0-rc.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.9",
