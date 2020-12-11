@@ -16,7 +16,7 @@ export default createStore({
     },
     async fetchDataManagerHistory (context) {
       const data = await getDataManagerHistory();
-      context.commit('setDataManagerHistory', data)
+      context.commit('setDataManagerHistory', data);
     },
   },
   mutations: {
@@ -25,6 +25,9 @@ export default createStore({
     },
     setDataManagerHistory (state, data) {
       state.dataManagerHistory = data;
+    },
+    setDataManagerHistoryChart (state, data) {
+      state.dataManagerHistoryChart = data;
     },
   },
   getters: {
