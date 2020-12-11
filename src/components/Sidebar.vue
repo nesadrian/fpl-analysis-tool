@@ -1,6 +1,5 @@
 <template>
   <nav className="sidebar-container">
-    
   </nav>
 </template>
 

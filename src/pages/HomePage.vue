@@ -2,8 +2,8 @@
   <main className="main-container main-container--home">
     <Title text="Dashboard" />
     <Card :title="'Overall Rank'" :value="dataManagerGeneral.summary_overall_rank" />
-    <Card :title="'Gameweek Rank'" :value="dataManagerGeneral.summary_event_rank" />
     <Card :title="'Overall Points'" :value="dataManagerGeneral.summary_overall_points" />
+    <Card :title="'Gameweek Rank'" :value="dataManagerGeneral.summary_event_rank" />
     <Card :title="'Gameweek Points'" :value="dataManagerGeneral.summary_event_points" />
     <LineChart :chartSeries="chartDataManagerHistory.series" :chartOptions="chartDataManagerHistory.chartOptions"/>
   </main>

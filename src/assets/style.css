@@ -12,18 +12,20 @@
 #app {
   width: 100vw;
   height: 100vh;
+  display: flex;
 }
 
 /* Main */
 .main-container {
   height: 100%;
+  width: 100%;
   background-color: var(--bg-color-dark);
   padding: 25px;
 }
 
 .main-container--home {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, auto);
     grid-template-rows: repeat(3, min-content);
     grid-gap: 25px;
 }
@@ -45,6 +47,12 @@
 .main-container--home section:nth-child(6) {
   grid-column: 3 / 5;
   grid-row: 2 / 4;
+}
+
+/* Sidebar */
+.sidebar-container {
+  background-color: var(--bg-color-light);
+  width: 350px;
 }
 
 /* Title */
