@@ -1,13 +1,12 @@
 <template>
   <main v-if="loading" className="loader-container">
-    {{ this.dataManagerHistoryChart }}
     <MoonLoader />
   </main>
   <main v-else className="main-container main-container--home">
     <Title text="Dashboard" />
-    <Card :title="'Overall Rank'" :value="this.dataManagerGeneral.summary_overall_rank" />
-    <Card :title="'Overall Points'" :value="this.dataManagerGeneral.summary_overall_points" />
-    <Card :title="'Gameweek Rank'" :value="this.dataManagerGeneral.summary_event_rank" />
+    <Card :title="'Overall Rank'" :value="this.dataManagerGeneral.summary_overall_rank" :valueDiff="this.dataManagerGeneral.summary_overall_rank - this.dataPreviousGameweek.overall_rank" />
+    <Card :title="'Overall Points'" :value="this.dataManagerGeneral.summary_overall_points" :valueDiff="this.dataManagerGeneral.summary_overall_points - this.dataPreviousGameweek.total_points" />
+    <Card :title="'Gameweek Rank'" :value="this.dataManagerGeneral.summary_event_rank" :valueDiff="this.dataManagerGeneral.summary_event_rank - this.dataPreviousGameweek.rank" />
     <Card :title="'Gameweek Points'" :value="this.dataManagerGeneral.summary_event_points" />
   </main>
 </template>
@@ -51,7 +50,15 @@ export default {
       return this.$store.getters.getDataManagerGeneral;
     },
     dataManagerHistory() {
-      return this.$store.getters.getDataManagerHistoryChart;
+      return this.$store.getters.getDataManagerHistory;
+    },
+    dataPreviousGameweek() {
+      const numOfGameweeks = this.$store.getters.getDataManagerHistory.current.length;
+      if(numOfGameweeks > 1) {
+        console.log(numOfGameweeks, "s")
+        return this.$store.getters.getDataManagerHistory.current[numOfGameweeks - 2]
+      }
+      return null
     },
   }
 }
