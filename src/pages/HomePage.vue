@@ -1,6 +1,6 @@
 <template>
   <main className="main-container main-container--home">
-    {{ this.dataManagerGeneral }}
+    {{ this.dataManagerHistory }}
   </main>
 </template>
 
@@ -23,8 +23,6 @@ export default {
   data() {
     return {
       loadingChart: false,
-      dataManagerHistory: undefined,
-      chartDataManagerHistory: undefined
     }
   },
   components: {
@@ -51,7 +49,10 @@ export default {
   computed: {
     dataManagerGeneral() {
       return this.$store.getters.getDataManagerGeneral;
-    }
+    },
+    dataManagerHistory() {
+      return this.$store.getters.getDataManagerGeneral;
+    },
   }
 }
 </script>
