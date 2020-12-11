@@ -1,19 +1,29 @@
 import { createStore } from "vuex";
+//import { getDataManagerHistory } from '../api'
+import { getDataManagerGeneral } from './api'
 
 export default createStore({
   state () {
     return {
-      todos: 1
+      dataManagerGeneral: 1,
+      dataManagerHistory: undefined,
+      dataFixtures: undefined,
     }
   },
+  actions: {
+    async fetchDataManagerGeneral (context) {
+      const data = await getDataManagerGeneral();
+      context.commit('setDataManagerGeneral', data)
+    },
+  },
   mutations: {
-    addTodo (state) {
-      state.todos++;
+    setDataManagerGeneral (state, data) {
+      state.dataManagerGeneral = data;
     }
   },
   getters: {
-    getTodos (state) {
-      return state.todos;
+    getDataManagerGeneral (state) {
+      return state.dataManagerGeneral;
     },
   }
 });
