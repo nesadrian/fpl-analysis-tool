@@ -1,5 +1,5 @@
 <template>
-  <section className="card-container">
+  <section className="card-container main__card">
     <h1 className="card__title">{{ title }}</h1>
     <h1 className="card__value">{{ value }}</h1>
     <section v-if="valueDiff > 0" className="card__valueDiff-container">

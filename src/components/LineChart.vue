@@ -1,8 +1,9 @@
 <template>
-  <section>
+  <section className="chart-container main__card">
     <VueApexCharts
-      width="600"
       type="line"
+      height= "100%"
+      width= "100%"
       :options="chartOptions"
       :series="chartSeries"
     />

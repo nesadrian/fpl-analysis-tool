@@ -33,10 +33,19 @@
   grid-row: 2 / 3;
 }
 
+.main__card {
+  padding: 20px;
+  background-color: var(--bg-color-light);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 /* Main--home */
 .main-container--home {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: min-content min-content 1fr 1fr;
   grid-template-rows: repeat(3, min-content);
   grid-gap: 25px;
 }
@@ -69,13 +78,6 @@
 .card-container {
   height: 175px;
   width: 175px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding: 20px;
-  background-color: var(--bg-color-light);
-  border-radius: 5px;
-  grid-column-start: 1;
 }
 
 .card__title {
@@ -113,6 +115,12 @@
   height: 16px;
   width: 16px;
   margin-right: 1px;
+}
+
+/* Chart */
+.chart-container {
+  height: 375px;
+  width: 100%;
 }
 
 /* Loader */
