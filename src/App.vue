@@ -7,14 +7,12 @@
   <template v-else>
     <Sidebar />
     <HomePage :managerId=managerId />
-    <Footer />
   </template>
 </template>
 
 <script>
 import HomePage from './pages/HomePage.vue'
 import Sidebar from './components/Sidebar'
-import Footer from './components/Footer'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
 
 export default {
@@ -27,7 +25,6 @@ export default {
   components: {
     HomePage,
     Sidebar,
-    Footer,
     MoonLoader
   },
 }
