@@ -55,7 +55,6 @@ export default {
     dataPreviousGameweek() {
       const numOfGameweeks = this.$store.getters.getDataManagerHistory.current.length;
       if(numOfGameweeks > 1) {
-        console.log(numOfGameweeks, "s")
         return this.$store.getters.getDataManagerHistory.current[numOfGameweeks - 2]
       }
       return null
