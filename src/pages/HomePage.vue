@@ -8,7 +8,18 @@
     <Card :title="'Overall Points'" :value="this.dataManagerGeneral.summary_overall_points" :valueDiff="this.dataManagerGeneral.summary_overall_points - this.dataPreviousGameweek.total_points" />
     <Card :title="'Gameweek Rank'" :value="this.dataManagerGeneral.summary_event_rank" :valueDiff="this.dataManagerGeneral.summary_event_rank - this.dataPreviousGameweek.rank" />
     <Card :title="'Gameweek Points'" :value="this.dataManagerGeneral.summary_event_points" />
-    <LineChart :chartSeries="this.dataManagerHistoryChart.series" :chartOptions="this.dataManagerHistoryChart.chartOptions"/>
+    <template v-if="clickedCard === 'Overall Rank'">
+      <LineChart :chartSeries="this.dataManagerOverallRankChart.series" :chartOptions="this.dataManagerOverallRankChart.chartOptions"/>
+    </template>
+    <template v-else-if="clickedCard === 'Gameweek Rank'">
+      <LineChart :chartSeries="this.dataManagerGameweekRankChart.series" :chartOptions="this.dataManagerGameweekRankChart.chartOptions"/>
+    </template>
+    <template v-else-if="clickedCard === 'Overall Points'">
+      <LineChart :chartSeries="this.dataManagerOverallPointsChart.series" :chartOptions="this.dataManagerOverallPointsChart.chartOptions"/>
+    </template>
+    <template v-else-if="clickedCard === 'Gameweek Points'">
+      <LineChart :chartSeries="this.dataManagerGameweekPointsChart.series" :chartOptions="this.dataManagerGameweekPointsChart.chartOptions"/>
+    </template>
   </main>
 </template>
 
@@ -17,13 +28,19 @@ import Card from '../components/Card'
 import LineChart from '../components/LineChart'
 import Title from '../components/Title'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
-import { getChartDataFromHistory } from '../helpers'
+import { 
+  getChartDataOverallRank, 
+  getChartDataGameweekRank,
+  getChartDataOverallPoints,
+  getChartDataGameweekPoints,
+} from '../helpers'
 
 export default {
   name: 'HomePage',
   data() {
     return {
       loading: false,
+      clickedCard: 'Overall Rank'
     }
   },
   components: {
@@ -53,8 +70,17 @@ export default {
     dataManagerHistory() {
       return this.$store.getters.getDataManagerHistory;
     },
-    dataManagerHistoryChart() {
-      return getChartDataFromHistory(this.$store.getters.getDataManagerHistory.current)
+    dataManagerOverallRankChart() {
+      return getChartDataOverallRank(this.$store.getters.getDataManagerHistory.current)
+    },
+    dataManagerGameweekRankChart() {
+      return getChartDataGameweekRank(this.$store.getters.getDataManagerHistory.current)
+    },
+    dataManagerOverallPointsChart() {
+      return getChartDataOverallPoints(this.$store.getters.getDataManagerHistory.current)
+    },
+    dataManagerGameweekPointsChart() {
+      return getChartDataGameweekPoints(this.$store.getters.getDataManagerHistory.current)
     },
     dataPreviousGameweek() {
       const numOfGameweeks = this.$store.getters.getDataManagerHistory.current.length;

@@ -1,30 +1,33 @@
-const getChartDataFromHistory = (history) => {
-  const chartData = {
-    chartOptions: {
-      chart: {
-        toolbar: {
-          show: false
-        },
+const chartDataTemplate = {
+  chartOptions: {
+    chart: {
+      toolbar: {
+        show: false
       },
-      xaxis: {
-        categories: []
-      },
-      yaxis: {
-        reversed: true,
-        labels: {
-          formatter: function(val) {
-            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-          }
+    },
+    xaxis: {
+      categories: []
+    },
+    yaxis: {
+      labels: {
+        formatter: function(val) {
+          return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
         }
       }
+    }
+  },
+  series: [
+    {
+      name: "",
+      data: []
     },
-    series: [
-      {
-        name: "Overall Rank",
-        data: []
-      },
-    ]
-  }
+  ]
+}
+
+
+const getChartDataOverallRank = (history) => {
+  let chartData = chartDataTemplate
+  chartData.chartOptions.yaxis.reversed = true
   history.forEach(gameweek => {
     chartData.chartOptions.xaxis.categories.push(gameweek.event)
     chartData.series[0].data.push(gameweek.overall_rank)
@@ -32,6 +35,39 @@ const getChartDataFromHistory = (history) => {
   return chartData
 }
 
+const getChartDataGameweekRank = (history) => {
+  let chartData = chartDataTemplate
+  chartData.chartOptions.yaxis.reversed = true
+  history.forEach(gameweek => {
+    chartData.chartOptions.xaxis.categories.push(gameweek.event)
+    chartData.series[0].data.push(gameweek.rank)
+  })
+  return chartData
+}
+
+const getChartDataOverallPoints = (history) => {
+  let chartData = chartDataTemplate
+  chartData.chartOptions.yaxis.reversed = false
+  history.forEach(gameweek => {
+    chartData.chartOptions.xaxis.categories.push(gameweek.event)
+    chartData.series[0].data.push(gameweek.total_points)
+  })
+  return chartData
+}
+
+const getChartDataGameweekPoints = (history) => {
+  let chartData = chartDataTemplate
+  chartData.chartOptions.yaxis.reversed = false
+  history.forEach(gameweek => {
+    chartData.chartOptions.xaxis.categories.push(gameweek.event)
+    chartData.series[0].data.push(gameweek.points)
+  })
+  return chartData
+}
+
 export {
-  getChartDataFromHistory  
+  getChartDataOverallRank,
+  getChartDataGameweekRank,
+  getChartDataOverallPoints,
+  getChartDataGameweekPoints
 }
