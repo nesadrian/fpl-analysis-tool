@@ -28,12 +28,7 @@ import Card from '../components/Card'
 import LineChart from '../components/LineChart'
 import Title from '../components/Title'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
-import { 
-  getChartDataOverallRank, 
-  getChartDataGameweekRank,
-  getChartDataOverallPoints,
-  getChartDataGameweekPoints,
-} from '../helpers'
+import { getChartData } from '../helpers'
 
 export default {
   name: 'HomePage',
@@ -71,16 +66,24 @@ export default {
       return this.$store.getters.getDataManagerHistory;
     },
     dataManagerOverallRankChart() {
-      return getChartDataOverallRank(this.$store.getters.getDataManagerHistory.current)
+      const xData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.overall_rank)
+      const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
+      return getChartData(xData, yData, true, 'Overall Rank')
     },
     dataManagerGameweekRankChart() {
-      return getChartDataGameweekRank(this.$store.getters.getDataManagerHistory.current)
+      const xData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.rank)
+      const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
+      return getChartData(xData, yData, true, 'Gameweek Rank')
     },
     dataManagerOverallPointsChart() {
-      return getChartDataOverallPoints(this.$store.getters.getDataManagerHistory.current)
+      const xData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.total_points)
+      const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
+      return getChartData(xData, yData, false, 'Overall Points')
     },
     dataManagerGameweekPointsChart() {
-      return getChartDataGameweekPoints(this.$store.getters.getDataManagerHistory.current)
+      const xData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.points)
+      const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
+      return getChartData(xData, yData, false, 'Gameweek Points')
     },
     dataPreviousGameweek() {
       const numOfGameweeks = this.$store.getters.getDataManagerHistory.current.length;
