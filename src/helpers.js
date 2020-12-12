@@ -1,4 +1,4 @@
-const chartDataTemplate = {
+export const getChartData = (xData, yData, reversed, name) => ({
   chartOptions: {
     chart: {
       toolbar: {
@@ -6,9 +6,13 @@ const chartDataTemplate = {
       },
     },
     xaxis: {
-      categories: []
+      title: {
+        text: 'Gameweek'
+      },
+      categories: yData
     },
     yaxis: {
+      reversed,
       labels: {
         formatter: function(val) {
           return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -18,56 +22,8 @@ const chartDataTemplate = {
   },
   series: [
     {
-      name: "",
-      data: []
+      name,
+      data: xData
     },
   ]
-}
-
-
-const getChartDataOverallRank = (history) => {
-  let chartData = chartDataTemplate
-  chartData.chartOptions.yaxis.reversed = false
-  history.forEach(gameweek => {
-    chartData.chartOptions.xaxis.categories.push(gameweek.event)
-    chartData.series[0].data.push(gameweek.overall_rank)
-  })
-  return chartData
-}
-
-const getChartDataGameweekRank = (history) => {
-  let chartData = chartDataTemplate
-  chartData.chartOptions.yaxis.reversed = false
-  history.forEach(gameweek => {
-    chartData.chartOptions.xaxis.categories.push(gameweek.event)
-    chartData.series[0].data.push(gameweek.rank)
-  })
-  return chartData
-}
-
-const getChartDataOverallPoints = (history) => {
-  let chartData = chartDataTemplate
-  chartData.chartOptions.yaxis.reversed = false
-  history.forEach(gameweek => {
-    chartData.chartOptions.xaxis.categories.push(gameweek.event)
-    chartData.series[0].data.push(gameweek.total_points)
-  })
-  return chartData
-}
-
-const getChartDataGameweekPoints = (history) => {
-  let chartData = chartDataTemplate
-  chartData.chartOptions.yaxis.reversed = false
-  history.forEach(gameweek => {
-    chartData.chartOptions.xaxis.categories.push(gameweek.event)
-    chartData.series[0].data.push(gameweek.points)
-  })
-  return chartData
-}
-
-export {
-  getChartDataOverallRank,
-  getChartDataGameweekRank,
-  getChartDataOverallPoints,
-  getChartDataGameweekPoints
-}
+})

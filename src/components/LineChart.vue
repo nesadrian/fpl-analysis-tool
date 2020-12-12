@@ -15,7 +15,7 @@ import VueApexCharts from "vue3-apexcharts";
 export default {
   name: 'LineChart',
   props: {
-    chartSeries: Object,
+    chartSeries: Array,
     chartOptions: Object
   },
   components: {
