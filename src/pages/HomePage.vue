@@ -8,15 +8,16 @@
     <Card :title="'Overall Points'" :value="this.dataManagerGeneral.summary_overall_points" :valueDiff="this.dataManagerGeneral.summary_overall_points - this.dataPreviousGameweek.total_points" />
     <Card :title="'Gameweek Rank'" :value="this.dataManagerGeneral.summary_event_rank" :valueDiff="this.dataManagerGeneral.summary_event_rank - this.dataPreviousGameweek.rank" />
     <Card :title="'Gameweek Points'" :value="this.dataManagerGeneral.summary_event_points" />
+    <LineChart :chartSeries="this.dataManagerHistoryChart.series" :chartOptions="this.dataManagerHistoryChart.chartOptions"/>
   </main>
 </template>
 
 <script>
-//<LineChart :chartSeries="this.dataManagerHistoryChart.series" :chartOptions="this.dataManagerHistoryChart.chartOptions"/>
 import Card from '../components/Card'
-//import LineChart from '../components/LineChart'
+import LineChart from '../components/LineChart'
 import Title from '../components/Title'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
+import { getChartDataFromHistory } from '../helpers'
 
 export default {
   name: 'HomePage',
@@ -29,7 +30,7 @@ export default {
     Title,
     Card,
     MoonLoader,
-    //LineChart
+    LineChart
   },
   props: {
     managerId: String,
@@ -51,6 +52,9 @@ export default {
     },
     dataManagerHistory() {
       return this.$store.getters.getDataManagerHistory;
+    },
+    dataManagerHistoryChart() {
+      return getChartDataFromHistory(this.$store.getters.getDataManagerHistory.current)
     },
     dataPreviousGameweek() {
       const numOfGameweeks = this.$store.getters.getDataManagerHistory.current.length;
