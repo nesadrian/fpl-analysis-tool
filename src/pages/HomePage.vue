@@ -4,10 +4,10 @@
   </main>
   <main v-else className="main-container main-container--home">
     <Title text="Dashboard" />
-    <Card :title="'Overall Rank'" :value="this.dataManagerGeneral.summary_overall_rank" :valueDiff="this.dataManagerGeneral.summary_overall_rank - this.dataPreviousGameweek.overall_rank" />
-    <Card :title="'Overall Points'" :value="this.dataManagerGeneral.summary_overall_points" :valueDiff="this.dataManagerGeneral.summary_overall_points - this.dataPreviousGameweek.total_points" />
-    <Card :title="'Gameweek Rank'" :value="this.dataManagerGeneral.summary_event_rank" :valueDiff="this.dataManagerGeneral.summary_event_rank - this.dataPreviousGameweek.rank" />
-    <Card :title="'Gameweek Points'" :value="this.dataManagerGeneral.summary_event_points" />
+    <Card v-on:click="this.clickedCard='Overall Rank'" :title="'Overall Rank'" :value="this.dataManagerGeneral.summary_overall_rank" :valueDiff="this.dataManagerGeneral.summary_overall_rank - this.dataPreviousGameweek.overall_rank" />
+    <Card v-on:click="this.clickedCard='Overall Points'" :title="'Overall Points'" :value="this.dataManagerGeneral.summary_overall_points" :valueDiff="this.dataManagerGeneral.summary_overall_points - this.dataPreviousGameweek.total_points" />
+    <Card v-on:click="this.clickedCard='Gameweek Rank'" :title="'Gameweek Rank'" :value="this.dataManagerGeneral.summary_event_rank" :valueDiff="this.dataManagerGeneral.summary_event_rank - this.dataPreviousGameweek.rank" />
+    <Card v-on:click="this.clickedCard='Gameweek Points'" :title="'Gameweek Points'" :value="this.dataManagerGeneral.summary_event_points" />
     <template v-if="clickedCard === 'Overall Rank'">
       <LineChart :chartSeries="this.dataManagerOverallRankChart.series" :chartOptions="this.dataManagerOverallRankChart.chartOptions"/>
     </template>

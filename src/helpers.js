@@ -27,7 +27,7 @@ const chartDataTemplate = {
 
 const getChartDataOverallRank = (history) => {
   let chartData = chartDataTemplate
-  chartData.chartOptions.yaxis.reversed = true
+  chartData.chartOptions.yaxis.reversed = false
   history.forEach(gameweek => {
     chartData.chartOptions.xaxis.categories.push(gameweek.event)
     chartData.series[0].data.push(gameweek.overall_rank)
@@ -37,7 +37,7 @@ const getChartDataOverallRank = (history) => {
 
 const getChartDataGameweekRank = (history) => {
   let chartData = chartDataTemplate
-  chartData.chartOptions.yaxis.reversed = true
+  chartData.chartOptions.yaxis.reversed = false
   history.forEach(gameweek => {
     chartData.chartOptions.xaxis.categories.push(gameweek.event)
     chartData.series[0].data.push(gameweek.rank)
