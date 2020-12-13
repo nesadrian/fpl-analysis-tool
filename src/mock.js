@@ -43888,8 +43888,115 @@ const dataMockFixtures = {
   ]
 }
 
+const dataMockLeague = {
+   "league":{
+      "id":93989,
+      "name":"FPL 101",
+      "created":"2020-08-16T13:17:23.217354Z",
+      "closed":false,
+      "max_entries":null,
+      "league_type":"x",
+      "scoring":"c",
+      "admin_entry":null,
+      "start_event":1,
+      "code_privacy":"p",
+      "rank":null
+   },
+   "new_entries":{
+      "has_next":false,
+      "page":1,
+      "results":[
+         
+      ]
+   },
+   "standings":{
+      "has_next":false,
+      "page":1,
+      "results":[
+         {
+            "id":9496890,
+            "event_total":24,
+            "player_name":"Playerone",
+            "rank":1,
+            "last_rank":1,
+            "rank_sort":1,
+            "total":725,
+            "entry":1719550,
+            "entry_name":"Blå Mentalitet"
+         },
+         {
+            "id":6592836,
+            "event_total":28,
+            "player_name":"Playertwo",
+            "rank":2,
+            "last_rank":2,
+            "rank_sort":2,
+            "total":721,
+            "entry":1227022,
+            "entry_name":"Die Mannschaft"
+         },
+         {
+            "id":2395239,
+            "event_total":27,
+            "player_name":"Playerthree",
+            "rank":3,
+            "last_rank":3,
+            "rank_sort":3,
+            "total":684,
+            "entry":479420,
+            "entry_name":"⛔ ingen shinj ⛔"
+         },
+         {
+            "id":2395242,
+            "event_total":20,
+            "player_name":"Playerfour",
+            "rank":4,
+            "last_rank":4,
+            "rank_sort":4,
+            "total":666,
+            "entry":171939,
+            "entry_name":"Kylling&Reece"
+         },
+         {
+            "id":2395245,
+            "event_total":28,
+            "player_name":"Playerfive",
+            "rank":5,
+            "last_rank":5,
+            "rank_sort":5,
+            "total":626,
+            "entry":69559,
+            "entry_name":"makky"
+         },
+         {
+            "id":12124700,
+            "event_total":24,
+            "player_name":"Playersiz",
+            "rank":6,
+            "last_rank":6,
+            "rank_sort":6,
+            "total":574,
+            "entry":2167882,
+            "entry_name":"Rive Rolf FC"
+         },
+         {
+            "id":37484503,
+            "event_total":11,
+            "player_name":"Playerseven",
+            "rank":7,
+            "last_rank":7,
+            "rank_sort":7,
+            "total":478,
+            "entry":5774742,
+            "entry_name":"FC ALSOTRASH"
+         }
+      ]
+   }
+}
+
 export {
   dataMockManagerGeneral,
   dataMockManagerHistory,
-  dataMockFixtures
+  dataMockFixtures,
+  dataMockLeague
 }
