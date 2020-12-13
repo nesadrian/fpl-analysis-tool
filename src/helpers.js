@@ -1,4 +1,4 @@
-export const getChartData = (xData, yData, reversed, name) => ({
+const getChartData = (xData, yData, reversed, name) => ({
   chartOptions: {
     chart: {
       toolbar: {
@@ -27,3 +27,10 @@ export const getChartData = (xData, yData, reversed, name) => ({
     },
   ]
 })
+
+const sortLeaguesPrivate = leagues => leagues.sort(league => league.league_type !== 'x')
+
+export {
+  getChartData,
+  sortLeaguesPrivate
+}

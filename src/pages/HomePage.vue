@@ -20,6 +20,7 @@
     <template v-else-if="clickedCard === 'Gameweek Points'">
       <LineChart :chartSeries="this.dataManagerGameweekPointsChart.series" :chartOptions="this.dataManagerGameweekPointsChart.chartOptions"/>
     </template>
+    <Leagues :leagues="this.dataClassicLeagues"/>
   </main>
 </template>
 
@@ -27,8 +28,9 @@
 import Card from '../components/Card'
 import LineChart from '../components/LineChart'
 import Title from '../components/Title'
+import Leagues from '../components/Leagues'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
-import { getChartData } from '../helpers'
+import { getChartData, sortLeaguesPrivate } from '../helpers'
 
 export default {
   name: 'HomePage',
@@ -42,6 +44,7 @@ export default {
     Title,
     Card,
     MoonLoader,
+    Leagues,
     LineChart
   },
   props: {
@@ -89,6 +92,14 @@ export default {
       const numOfGameweeks = this.$store.getters.getDataManagerHistory.current.length;
       if(numOfGameweeks > 1) {
         return this.$store.getters.getDataManagerHistory.current[numOfGameweeks - 2]
+      }
+      return null
+    },
+    dataClassicLeagues() {
+      const leagues = this.$store.getters.getDataManagerGeneral.leagues.classic;
+
+      if(leagues.length > 0) {
+        return sortLeaguesPrivate(leagues)
       }
       return null
     },
