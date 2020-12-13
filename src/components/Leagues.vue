@@ -1,5 +1,7 @@
 <template>
- <League />
+  <li v-for="league in leagues" :key="league.id">
+    <League :name="league.name" :rank="league.entry_rank" :lastRank="league.entry_last_rank" />
+  </li>
 </template>
 
 <script>
