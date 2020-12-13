@@ -1,7 +1,9 @@
 <template>
-  <h1>{{ name }}</h1>
-  <h1>{{ rank }}</h1>
-  <h1>{{ rank - lastRank }}</h1>
+  <section className="league-container">
+    <h1 className="card__title">{{ name }}</h1>
+    <h1>{{ rank }}</h1>
+    <h1>{{ rank - lastRank }}</h1>
+  </section>
 </template>
 
 <script>
