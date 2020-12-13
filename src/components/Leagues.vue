@@ -1,8 +1,12 @@
 <template>
-  <h1>Leagues</h1>
+  <h1>{{ leagues }}</h1>
 </template>
 
 <script>
 export default {
+  props: {
+    leagues: Array
+  }
 }
+
 </script>
