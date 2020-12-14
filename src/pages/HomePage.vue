@@ -3,7 +3,7 @@
     <MoonLoader />
   </main>
   <main v-else className="main-container main-container--home">
-    <Title text="Dashboard" />
+    <PageTitle text="Dashboard" />
     <Card v-on:click="this.clickedCard='Overall Rank'" :title="'Overall Rank'" :value="this.dataManagerGeneral.summary_overall_rank" :valueDiff="this.dataManagerGeneral.summary_overall_rank - this.dataPreviousGameweek.overall_rank" />
     <Card v-on:click="this.clickedCard='Overall Points'" :title="'Overall Points'" :value="this.dataManagerGeneral.summary_overall_points" :valueDiff="this.dataManagerGeneral.summary_overall_points - this.dataPreviousGameweek.total_points" />
     <Card v-on:click="this.clickedCard='Gameweek Rank'" :title="'Gameweek Rank'" :value="this.dataManagerGeneral.summary_event_rank" :valueDiff="this.dataManagerGeneral.summary_event_rank - this.dataPreviousGameweek.rank" />
@@ -28,7 +28,7 @@
 <script>
 import Card from '../components/Card'
 import LineChart from '../components/LineChart'
-import Title from '../components/Title'
+import PageTitle from '../components/PageTitle'
 import Leagues from '../components/Leagues'
 import Chips from '../components/Chips'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
@@ -43,7 +43,7 @@ export default {
     }
   },
   components: {
-    Title,
+    PageTitle,
     Card,
     MoonLoader,
     Leagues,
