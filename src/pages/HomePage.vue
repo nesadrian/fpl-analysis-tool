@@ -21,6 +21,7 @@
       <LineChart :chartSeries="this.dataManagerGameweekPointsChart.series" :chartOptions="this.dataManagerGameweekPointsChart.chartOptions"/>
     </template>
     <Leagues :leagues="this.dataClassicLeagues"/>
+    <Chips />
   </main>
 </template>
 
@@ -29,6 +30,7 @@ import Card from '../components/Card'
 import LineChart from '../components/LineChart'
 import Title from '../components/Title'
 import Leagues from '../components/Leagues'
+import Chips from '../components/Chips'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
 import { getChartData, sortLeaguesPrivate } from '../helpers'
 
@@ -45,6 +47,7 @@ export default {
     Card,
     MoonLoader,
     Leagues,
+    Chips,
     LineChart
   },
   props: {
