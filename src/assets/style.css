@@ -136,6 +136,11 @@
   padding: 10px;
 }
 
+/* Chips */
+.chips-container {
+  align-items: center;
+}
+
 /* Chart */
 .chart-container {
   height: 375px;

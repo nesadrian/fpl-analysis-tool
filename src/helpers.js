@@ -30,7 +30,23 @@ const getChartData = (xData, yData, reversed, name) => ({
 
 const sortLeaguesPrivate = leagues => leagues.sort(league => league.league_type !== 'x')
 
+const getAllChips = usedChips => {
+  const chipNames = ['wildcard', 'benchboost', 'freehit', 'triplecaptain']
+  const chips = usedChips
+  chipNames.forEach(chipName => {
+    usedChips.some(chip => chip.name !== chipName) && (
+      chips.push({
+        name: chipName,
+        time: undefined,
+        event: undefined
+      })
+    )
+  })
+  return chips
+}
+
 export {
   getChartData,
-  sortLeaguesPrivate
+  sortLeaguesPrivate,
+  getAllChips
 }

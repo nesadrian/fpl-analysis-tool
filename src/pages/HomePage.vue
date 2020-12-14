@@ -21,7 +21,7 @@
       <LineChart :chartSeries="this.dataManagerGameweekPointsChart.series" :chartOptions="this.dataManagerGameweekPointsChart.chartOptions"/>
     </template>
     <Leagues :leagues="this.dataClassicLeagues"/>
-    <Chips />
+    <Chips :chips="this.dataChips" />
   </main>
 </template>
 
@@ -32,7 +32,7 @@ import Title from '../components/Title'
 import Leagues from '../components/Leagues'
 import Chips from '../components/Chips'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
-import { getChartData, sortLeaguesPrivate } from '../helpers'
+import { getChartData, sortLeaguesPrivate, getAllChips } from '../helpers'
 
 export default {
   name: 'HomePage',
@@ -106,6 +106,10 @@ export default {
       }
       return null
     },
+    dataChips() {
+      const usedChips = this.$store.getters.getDataManagerHistory.chips
+      return getAllChips(usedChips)
+    }
   }
 }
 </script>
