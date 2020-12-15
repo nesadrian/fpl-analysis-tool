@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import { getDataManagerGeneral, getDataManagerHistory } from './api'
+import { getDataManagerGeneral, getDataManagerHistory, getDataFixtures } from './api'
 
 export default createStore({
   state () {
@@ -18,6 +18,10 @@ export default createStore({
       const data = await getDataManagerHistory();
       context.commit('setDataManagerHistory', data);
     },
+    async fetchDataFixtures (context) {
+      const data = await getDataFixtures();
+      context.commit('setDataFixtures', data);
+    },
   },
   mutations: {
     setDataManagerGeneral (state, data) {
@@ -26,8 +30,8 @@ export default createStore({
     setDataManagerHistory (state, data) {
       state.dataManagerHistory = data;
     },
-    setDataManagerHistoryChart (state, data) {
-      state.dataManagerHistoryChart = data;
+    setDataFixtures (state, data) {
+      state.dataFixtures = data;
     },
   },
   getters: {
@@ -36,6 +40,9 @@ export default createStore({
     },
     getDataManagerHistory (state) {
       return state.dataManagerHistory;
+    },
+    getDataFixtures (state) {
+      return state.dataFixtures;
     },
   }
 });

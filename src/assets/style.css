@@ -11,7 +11,6 @@
 
 #app {
   width: 100vw;
-  height: 100vh;
   display: flex;
 }
 
@@ -122,19 +121,28 @@
   grid-column: 1 / 4;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .leagues__title {
   font-size: 20px;
-  color: var(--txt-color-light)
+  color: var(--txt-color-light);
+  text-align: center;
 }
 
 /* League */
 .league-container {
   display: flex;
-  justify-content: space-between;
-  padding: 10px;
+  padding: 10px 20px;
+}
+
+.league-container > * { 
+  flex-basis: 50%;
+}
+
+.league__number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Chips */
@@ -142,12 +150,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 300px;
 }
 
 /* Chip */
 .chip-container {
   display: flex;
-  border-radius: 2px;
   height: 50px
 }
 
@@ -163,8 +171,9 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: var(--bg-color-dark);
-  min-width: 40%;
+  min-width: 50%;
+  font-size: 20px;
+  color: var(--txt-color-main)
 }
 
 .chip__data-container {
@@ -172,6 +181,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  border-radius: 5px;
 }
 
 /* Chart */

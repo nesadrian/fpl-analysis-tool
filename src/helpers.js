@@ -1,4 +1,6 @@
-const getChartData = (xData, yData, reversed, name) => ({
+const formatNumber = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+const getChartData = (xData, yData, reversed) => ({
   chartOptions: {
     chart: {
       toolbar: {
@@ -14,18 +16,11 @@ const getChartData = (xData, yData, reversed, name) => ({
     yaxis: {
       reversed,
       labels: {
-        formatter: function(val) {
-          return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-        }
+        formatter: num => formatNumber(num)
       }
     }
   },
-  series: [
-    {
-      name,
-      data: xData
-    },
-  ]
+  series: xData
 })
 
 const sortLeaguesPrivate = leagues => leagues.sort(league => league.league_type !== 'x')
@@ -45,8 +40,25 @@ const getAllChips = usedChips => {
   return chips
 }
 
+const formatChipName = chipName => {
+  switch(chipName) {
+    case 'wildcard':
+      return 'Wildcard'
+    case 'benchboost':
+      return 'Bench Boost'
+    case 'freehit':
+      return 'Free-Hit'
+    case 'triplecaptain':
+      return 'Triple Captain'
+    default:
+      return chipName
+  }
+}
+
 export {
   getChartData,
   sortLeaguesPrivate,
-  getAllChips
+  getAllChips,
+  formatChipName,
+  formatNumber
 }
