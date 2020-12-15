@@ -125,14 +125,24 @@
 
 .leagues__title {
   font-size: 20px;
-  color: var(--txt-color-light)
+  color: var(--txt-color-light);
+  text-align: center;
 }
 
 /* League */
 .league-container {
   display: flex;
-  padding: 10px;
-  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.league-container > * { 
+  flex-basis: 50%;
+}
+
+.league__number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Chips */
