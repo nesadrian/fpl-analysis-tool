@@ -1,3 +1,5 @@
+const formatNumber = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
 const getChartData = (xData, yData, reversed, name) => ({
   chartOptions: {
     chart: {
@@ -14,9 +16,7 @@ const getChartData = (xData, yData, reversed, name) => ({
     yaxis: {
       reversed,
       labels: {
-        formatter: function(val) {
-          return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-        }
+        formatter: num => formatNumber(num)
       }
     }
   },
@@ -64,5 +64,6 @@ export {
   getChartData,
   sortLeaguesPrivate,
   getAllChips,
-  formatChipName
+  formatChipName,
+  formatNumber
 }
