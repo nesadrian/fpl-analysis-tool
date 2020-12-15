@@ -113,6 +113,12 @@ export default {
           data: this.$store.getters.getDataFixtures.events
             .filter(gameweek => gameweek.finished)
             .map(gameweek => gameweek.average_entry_score)
+        },
+        {
+          name: 'Highest Gameweek Points',
+          data: this.$store.getters.getDataFixtures.events
+            .filter(gameweek => gameweek.finished)
+            .map(gameweek => gameweek.highest_score)
         }
       ]
       const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
