@@ -1,6 +1,6 @@
 const formatNumber = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
-const getChartData = (xData, yData, reversed, name) => ({
+const getChartData = (xData, yData, reversed) => ({
   chartOptions: {
     chart: {
       toolbar: {
@@ -20,12 +20,7 @@ const getChartData = (xData, yData, reversed, name) => ({
       }
     }
   },
-  series: [
-    {
-      name,
-      data: xData
-    },
-  ]
+  series: xData
 })
 
 const sortLeaguesPrivate = leagues => leagues.sort(league => league.league_type !== 'x')

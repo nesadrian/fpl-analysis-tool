@@ -9,16 +9,16 @@
     <Card v-on:click="this.clickedCard='Gameweek Rank'" :title="'Gameweek Rank'" :value="this.dataManagerGeneral.summary_event_rank" :valueDiff="this.dataManagerGeneral.summary_event_rank - this.dataPreviousGameweek.rank" />
     <Card v-on:click="this.clickedCard='Gameweek Points'" :title="'Gameweek Points'" :value="this.dataManagerGeneral.summary_event_points" />
     <template v-if="clickedCard === 'Overall Rank'">
-      <LineChart :chartSeries="this.dataManagerOverallRankChart.series" :chartOptions="this.dataManagerOverallRankChart.chartOptions"/>
+      <LineChart :chartSeries="this.dataOverallRankChart.series" :chartOptions="this.dataOverallRankChart.chartOptions"/>
     </template>
     <template v-else-if="clickedCard === 'Gameweek Rank'">
-      <LineChart :chartSeries="this.dataManagerGameweekRankChart.series" :chartOptions="this.dataManagerGameweekRankChart.chartOptions"/>
+      <LineChart :chartSeries="this.dataGameweekRankChart.series" :chartOptions="this.dataGameweekRankChart.chartOptions"/>
     </template>
     <template v-else-if="clickedCard === 'Overall Points'">
-      <LineChart :chartSeries="this.dataManagerOverallPointsChart.series" :chartOptions="this.dataManagerOverallPointsChart.chartOptions"/>
+      <LineChart :chartSeries="this.dataOverallPointsChart.series" :chartOptions="this.dataOverallPointsChart.chartOptions"/>
     </template>
     <template v-else-if="clickedCard === 'Gameweek Points'">
-      <LineChart :chartSeries="this.dataManagerGameweekPointsChart.series" :chartOptions="this.dataManagerGameweekPointsChart.chartOptions"/>
+      <LineChart :chartSeries="this.dataGameweekPointsChart.series" :chartOptions="this.dataGameweekPointsChart.chartOptions"/>
     </template>
     <Leagues :leagues="this.dataClassicLeagues"/>
     <Chips :chips="this.dataChips" />
@@ -61,6 +61,7 @@ export default {
       this.loading = true
       await this.$store.dispatch('fetchDataManagerGeneral')
       await this.$store.dispatch('fetchDataManagerHistory')
+      await this.$store.dispatch('fetchDataFixtures')
       this.loading = false
     }
   },
@@ -71,25 +72,51 @@ export default {
     dataManagerHistory() {
       return this.$store.getters.getDataManagerHistory;
     },
-    dataManagerOverallRankChart() {
-      const xData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.overall_rank)
+    dataOverallRankChart() {
+      const xData = [
+        {
+          name: 'Overall Rank',
+          data: this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.overall_rank)
+        }
+      ]
       const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
-      return getChartData(xData, yData, true, 'Overall Rank')
+      return getChartData(xData, yData, true)
     },
-    dataManagerGameweekRankChart() {
-      const xData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.rank)
+    dataGameweekRankChart() {
+      const xData = [
+        {
+          name: 'Gameweek Rank',
+          data: this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.rank)
+        }
+      ]
       const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
-      return getChartData(xData, yData, true, 'Gameweek Rank')
+      return getChartData(xData, yData, true)
     },
-    dataManagerOverallPointsChart() {
-      const xData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.total_points)
+    dataOverallPointsChart() {
+      const xData = [
+        {
+          name: 'Overall Points',
+          data: this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.total_points)
+        }
+      ]
       const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
-      return getChartData(xData, yData, false, 'Overall Points')
+      return getChartData(xData, yData, false)
     },
-    dataManagerGameweekPointsChart() {
-      const xData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.points)
+    dataGameweekPointsChart() {
+      const xData = [
+        {
+          name: 'Gameweek Points',
+          data: this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.points)
+        },
+        {
+          name: 'Average Gameweek Points',
+          data: this.$store.getters.getDataFixtures.events
+            .filter(gameweek => gameweek.finished)
+            .map(gameweek => gameweek.average_entry_score)
+        }
+      ]
       const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
-      return getChartData(xData, yData, false, 'Gameweek Points')
+      return getChartData(xData, yData, false)
     },
     dataPreviousGameweek() {
       const numOfGameweeks = this.$store.getters.getDataManagerHistory.current.length;
