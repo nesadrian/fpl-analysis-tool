@@ -4,6 +4,7 @@
       <h1>Name</h1>
       <h1>Rank</h1>
       <h1>Last Rank</h1>
+      <h1>Rank Difference</h1>
     </section>
     <li v-for="league in leagues" :key="league.id">
       <League :name="league.name" :rank="league.entry_rank" :lastRank="league.entry_last_rank" />

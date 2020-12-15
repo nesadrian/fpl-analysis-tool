@@ -122,7 +122,6 @@
   grid-column: 1 / 4;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .leagues__title {
@@ -133,8 +132,8 @@
 /* League */
 .league-container {
   display: flex;
-  justify-content: space-between;
   padding: 10px;
+  justify-content: space-between;
 }
 
 /* Chips */
