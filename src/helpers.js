@@ -45,8 +45,24 @@ const getAllChips = usedChips => {
   return chips
 }
 
+const formatChipName = chipName => {
+  switch(chipName) {
+    case 'wildcard':
+      return 'Wildcard'
+    case 'benchboost':
+      return 'Bench Boost'
+    case 'freehit':
+      return 'Free-Hit'
+    case 'triplecaptain':
+      return 'Triple Captain'
+    default:
+      return chipName
+  }
+}
+
 export {
   getChartData,
   sortLeaguesPrivate,
-  getAllChips
+  getAllChips,
+  formatChipName
 }
