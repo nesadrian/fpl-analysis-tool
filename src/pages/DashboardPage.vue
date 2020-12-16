@@ -2,7 +2,7 @@
   <main v-if="loading" className="loader-container">
     <MoonLoader />
   </main>
-  <main v-else className="main-container main-container--home">
+  <main v-else className="main-container main-container--dashboard">
     <PageTitle text="Dashboard" />
     <Card v-on:click="this.clickedCard='Overall Rank'" :title="'Overall Rank'" :value="this.dataManagerGeneral.summary_overall_rank" :valueDiff="this.dataManagerGeneral.summary_overall_rank - this.dataPreviousGameweek.overall_rank" />
     <Card v-on:click="this.clickedCard='Overall Points'" :title="'Overall Points'" :value="this.dataManagerGeneral.summary_overall_points" :valueDiff="this.dataManagerGeneral.summary_overall_points - this.dataPreviousGameweek.total_points" />
@@ -35,7 +35,7 @@ import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
 import { getChartData, sortLeaguesPrivate, getAllChips, formatChipName } from '../helpers'
 
 export default {
-  name: 'HomePage',
+  name: 'DashboardPage',
   data() {
     return {
       loading: false,
