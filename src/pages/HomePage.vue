@@ -59,6 +59,7 @@ export default {
   methods: {
     async fetchData() {
       this.loading = true
+      await this.$store.dispatch('fetchDataGeneral')
       await this.$store.dispatch('fetchDataManagerGeneral')
       await this.$store.dispatch('fetchDataManagerHistory')
       await this.$store.dispatch('fetchDataFixtures')
@@ -80,7 +81,8 @@ export default {
         }
       ]
       const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
-      return getChartData(xData, yData, true)
+      const totalPlayers = this.$store.getters.getData
+      return getChartData(xData, yData, true, 1, totalPlayers)
     },
     dataGameweekRankChart() {
       const xData = [

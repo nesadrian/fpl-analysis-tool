@@ -1,15 +1,20 @@
 import { createStore } from "vuex";
-import { getDataManagerGeneral, getDataManagerHistory, getDataFixtures } from './api'
+import { getDataGeneral, getDataManagerGeneral, getDataManagerHistory, getDataFixtures } from './api'
 
 export default createStore({
   state () {
     return {
+      dataGeneral: undefined,
       dataManagerGeneral: undefined,
       dataManagerHistory: undefined,
       dataFixtures: undefined,
     }
   },
   actions: {
+    async fetchDataGeneral (context) {
+      const data = await getDataGeneral();
+      context.commit('setDataGeneral', data)
+    },
     async fetchDataManagerGeneral (context) {
       const data = await getDataManagerGeneral();
       context.commit('setDataManagerGeneral', data)
@@ -24,6 +29,9 @@ export default createStore({
     },
   },
   mutations: {
+    setDataGeneral (state, data) {
+      state.dataGeneral = data;
+    },
     setDataManagerGeneral (state, data) {
       state.dataManagerGeneral = data;
     },
@@ -35,6 +43,9 @@ export default createStore({
     },
   },
   getters: {
+    getDataGeneral (state) {
+      return state.dataGeneral;
+    },
     getDataManagerGeneral (state) {
       return state.dataManagerGeneral;
     },
