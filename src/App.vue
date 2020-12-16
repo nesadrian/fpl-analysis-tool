@@ -6,12 +6,12 @@
   </template>
   <template v-else>
     <Sidebar />
-    <HomePage />
+    <DashboardPage />
   </template>
 </template>
 
 <script>
-import HomePage from './pages/HomePage.vue'
+import DashboardPage from './pages/DashboardPage.vue'
 import Sidebar from './components/Sidebar'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
 
@@ -34,7 +34,7 @@ export default {
     }
   },
   components: {
-    HomePage,
+    DashboardPage,
     Sidebar,
     MoonLoader
   },

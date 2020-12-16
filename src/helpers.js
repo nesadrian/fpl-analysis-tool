@@ -1,6 +1,6 @@
-const formatNumber = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+const formatNumber = num => num.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
-const getChartData = (xData, yData, reversed) => ({
+const getChartData = (xData, yData, reversed, min, max) => ({
   chartOptions: {
     chart: {
       toolbar: {
@@ -14,6 +14,8 @@ const getChartData = (xData, yData, reversed) => ({
       categories: yData
     },
     yaxis: {
+      min,
+      max,
       reversed,
       labels: {
         formatter: num => formatNumber(num)
