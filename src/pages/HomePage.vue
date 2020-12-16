@@ -81,7 +81,7 @@ export default {
         }
       ]
       const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
-      const totalPlayers = this.$store.getters.getData
+      const totalPlayers = this.$store.getters.getDataGeneral.total_players
       return getChartData(xData, yData, true, 1, totalPlayers)
     },
     dataGameweekRankChart() {
@@ -92,7 +92,8 @@ export default {
         }
       ]
       const yData = this.$store.getters.getDataManagerHistory.current.map(gameweek => gameweek.event)
-      return getChartData(xData, yData, true)
+        const totalPlayers = this.$store.getters.getDataGeneral.total_players
+      return getChartData(xData, yData, true, 1, totalPlayers)
     },
     dataOverallPointsChart() {
       const xData = [
