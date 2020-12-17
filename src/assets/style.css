@@ -18,16 +18,45 @@
 .sidebar-container {
   background-color: var(--bg-color-light);
   width: 350px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
   grid-column: 1 / 2;
   grid-row: 2 / 3;
 }
 
-.sidebar__btn {
+.sidebar__title-container {
+  text-align: center;
+  padding: 25px;
+}
+
+.sidebar__title {
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--txt-color-light);
+}
+
+.sidebar__nav-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidebar__nav__btn {
   color: var(--txt-color-main)
 }
 
-.sidebar__btn:hover {
+.sidebar__nav__btn:hover {
   text-decoration: underline;
+}
+
+.sidebar__footer-container {
+  bottom: 0;
+  position: fixed;
+}
+
+.sidebar__footer {
+  font-size: 15px;
 }
 
 /* Main */
