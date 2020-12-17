@@ -22,6 +22,14 @@
   grid-row: 2 / 3;
 }
 
+.sidebar__btn {
+  color: var(--txt-color-main)
+}
+
+.sidebar__btn:hover {
+  text-decoration: underline;
+}
+
 /* Main */
 .main-container {
   height: 100%;
