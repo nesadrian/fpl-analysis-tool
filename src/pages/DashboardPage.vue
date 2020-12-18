@@ -34,7 +34,7 @@ import PageTitle from '../components/PageTitle'
 import Leagues from '../components/Leagues'
 import Chips from '../components/Chips'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
-import { getChartData, sortLeaguesPrivate, getAllChips, formatChipName } from '../helpers'
+import { getChartData, sortLeaguesPrivate, getAllChips } from '../helpers'
 
 export default {
   name: 'DashboardPage',
@@ -146,10 +146,7 @@ export default {
     },
     dataChips() {
       const usedChips = this.$store.getters.getDataManagerHistory.chips
-      return getAllChips(usedChips).map(chip => {
-        chip.name = formatChipName(chip.name)
-        return chip
-      })
+      return getAllChips(usedChips)
     }
   }
 }
