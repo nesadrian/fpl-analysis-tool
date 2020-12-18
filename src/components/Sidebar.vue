@@ -5,6 +5,7 @@
     </section>
     <nav class="sidebar__nav-container">
       <router-link class="sidebar__nav__btn" to="/">Dasboard</router-link>
+      <router-link class="sidebar__nav__btn" to="/leagues">Leagues</router-link>
     </nav>
     <section class="sidebar__footer-container sidebar__title-container">
       <h1 class="sidebar__footer">Footer</h1>
