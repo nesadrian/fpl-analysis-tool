@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <h1 className="title__text">{{ text }}</h1>
+  <section class="main__title-container">
+    <h1 className="main__title__text">{{ text }}</h1>
   </section>
 </template>
 
