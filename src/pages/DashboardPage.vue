@@ -2,26 +2,28 @@
   <main v-if="loading" className="loader-container">
     <MoonLoader />
   </main>
-  <main v-else className="main-container main-container--dashboard">
+  <main v-else className="main-container">
     <PageTitle text="Dashboard" />
-    <Card v-on:click="this.clickedCard='Overall Rank'" :title="'Overall Rank'" :value="this.dataManagerGeneral.summary_overall_rank" :valueDiff="this.dataManagerGeneral.summary_overall_rank - this.dataPreviousGameweek.overall_rank" />
-    <Card v-on:click="this.clickedCard='Overall Points'" :title="'Overall Points'" :value="this.dataManagerGeneral.summary_overall_points" :valueDiff="this.dataManagerGeneral.summary_overall_points - this.dataPreviousGameweek.total_points" />
-    <Card v-on:click="this.clickedCard='Gameweek Rank'" :title="'Gameweek Rank'" :value="this.dataManagerGeneral.summary_event_rank" :valueDiff="this.dataManagerGeneral.summary_event_rank - this.dataPreviousGameweek.rank" />
-    <Card v-on:click="this.clickedCard='Gameweek Points'" :title="'Gameweek Points'" :value="this.dataManagerGeneral.summary_event_points" />
-    <template v-if="clickedCard === 'Overall Rank'">
-      <LineChart :chartSeries="this.dataOverallRankChart.series" :chartOptions="this.dataOverallRankChart.chartOptions"/>
-    </template>
-    <template v-else-if="clickedCard === 'Gameweek Rank'">
-      <LineChart :chartSeries="this.dataGameweekRankChart.series" :chartOptions="this.dataGameweekRankChart.chartOptions"/>
-    </template>
-    <template v-else-if="clickedCard === 'Overall Points'">
-      <LineChart :chartSeries="this.dataOverallPointsChart.series" :chartOptions="this.dataOverallPointsChart.chartOptions"/>
-    </template>
-    <template v-else-if="clickedCard === 'Gameweek Points'">
-      <LineChart :chartSeries="this.dataGameweekPointsChart.series" :chartOptions="this.dataGameweekPointsChart.chartOptions"/>
-    </template>
-    <Leagues :leagues="this.dataClassicLeagues"/>
-    <Chips :chips="this.dataChips" />
+    <section class="main__content-container--dashboard">
+      <Card v-on:click="this.clickedCard='Overall Rank'" :title="'Overall Rank'" :value="this.dataManagerGeneral.summary_overall_rank" :valueDiff="this.dataManagerGeneral.summary_overall_rank - this.dataPreviousGameweek.overall_rank" />
+      <Card v-on:click="this.clickedCard='Overall Points'" :title="'Overall Points'" :value="this.dataManagerGeneral.summary_overall_points" :valueDiff="this.dataManagerGeneral.summary_overall_points - this.dataPreviousGameweek.total_points" />
+      <Card v-on:click="this.clickedCard='Gameweek Rank'" :title="'Gameweek Rank'" :value="this.dataManagerGeneral.summary_event_rank" :valueDiff="this.dataManagerGeneral.summary_event_rank - this.dataPreviousGameweek.rank" />
+      <Card v-on:click="this.clickedCard='Gameweek Points'" :title="'Gameweek Points'" :value="this.dataManagerGeneral.summary_event_points" />
+      <template v-if="clickedCard === 'Overall Rank'">
+        <LineChart :chartSeries="this.dataOverallRankChart.series" :chartOptions="this.dataOverallRankChart.chartOptions"/>
+      </template>
+      <template v-else-if="clickedCard === 'Gameweek Rank'">
+        <LineChart :chartSeries="this.dataGameweekRankChart.series" :chartOptions="this.dataGameweekRankChart.chartOptions"/>
+      </template>
+      <template v-else-if="clickedCard === 'Overall Points'">
+        <LineChart :chartSeries="this.dataOverallPointsChart.series" :chartOptions="this.dataOverallPointsChart.chartOptions"/>
+      </template>
+      <template v-else-if="clickedCard === 'Gameweek Points'">
+        <LineChart :chartSeries="this.dataGameweekPointsChart.series" :chartOptions="this.dataGameweekPointsChart.chartOptions"/>
+      </template>
+      <Leagues :leagues="this.dataClassicLeagues"/>
+      <Chips :chips="this.dataChips" />
+    </section>
   </main>
 </template>
 
