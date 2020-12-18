@@ -1,9 +1,15 @@
 <template>
-  <h1>Leagues</h1>
+  <main className="main-container">
+    <PageTitle text="Leagues" />
+  </main>
 </template>
 
 <script>
-export default {
+import PageTitle from '../components/PageTitle'
 
+export default {
+  components: {
+    PageTitle
+  }
 }
 </script>
