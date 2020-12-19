@@ -8,21 +8,21 @@
     </section>
     <li v-for="league in leagues" :key="league.id">
       <router-link :to="'/leagues/' + league.id">
-        <League :name="league.name" :rank="league.entry_rank" :lastRank="league.entry_last_rank" />
+        <LeaguesListItem :name="league.name" :rank="league.entry_rank" :lastRank="league.entry_last_rank" />
       </router-link>
     </li>
   </section>
 </template>
 
 <script>
-import League from './League'
+import LeaguesListItem from './LeaguesListItem'
 
 export default {
   props: {
     leagues: Array
   },
   components: {
-    League
+    LeaguesListItem
   }
 }
 

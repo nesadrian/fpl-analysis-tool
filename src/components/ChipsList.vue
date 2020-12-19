@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Chip from './Chip'
+import ChipListItem from './ChipListItem'
 
 export default {
   props: {
@@ -15,7 +15,7 @@ export default {
     freeTransfers: Number
   },
   components: {
-    Chip
+    ChipListItem
   }
 }
 </script>

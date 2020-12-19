@@ -74,7 +74,6 @@ export default createStore({
       return state.dataFixtures;
     },
     getDataLeague: (state) => (id) => {
-      console.log("test", state.dataLeagues[0].league.id, id)
       return state.dataLeagues.find(obj => obj.league.id == id)
     }
   }
