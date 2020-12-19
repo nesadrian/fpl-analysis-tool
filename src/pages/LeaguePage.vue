@@ -4,12 +4,13 @@
   </main>
   <main v-else className="main-container">
     <PageTitle text="League" />
-    <h1>League {{ dataLeague }}</h1>
+    <League />
   </main>
 </template>
 
 <script>
 import PageTitle from '../components/PageTitle'
+import League from '../components/League'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
 
 export default {
@@ -31,6 +32,7 @@ export default {
   },
   components: {
     PageTitle,
+    League,
     MoonLoader
   },
   computed: {
