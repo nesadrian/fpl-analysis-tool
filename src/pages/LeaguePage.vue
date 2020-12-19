@@ -4,7 +4,7 @@
   </main>
   <main v-else className="main-container">
     <PageTitle text="League" />
-    <League />
+    <League :league="dataLeague" />
   </main>
 </template>
 

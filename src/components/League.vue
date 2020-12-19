@@ -1,9 +1,11 @@
 <template>
-  <h1>League</h1>
+  <h1>{{ this.league }}</h1>
 </template>
 
 <script>
 export default {
-
+  props: {
+    league: Object
+  }
 }
 </script>
