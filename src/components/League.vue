@@ -1,43 +1,35 @@
 <template>
-  <section className="league-container">
-    <section>
-      <h1 className="card__title">{{ name }}</h1>
-    </section>
-    <section className="league__number">
-      <h1 className="card__valueDiff card__valueDiff--neutral">{{ formattedRank }}</h1>
-    </section>
-    <section className="league__number">
-      <h1 className="card__valueDiff card__valueDiff--neutral">{{ formattedLastRank }}</h1>
-    </section>
-    <section v-if="rank - lastRank < 0" className="card__valueDiff-container league__number">
-      <svg class="card__valueDiff--positive card__valueDiff__icon" fill="currentColor" stroke="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/></svg>
-      <h1 className="card__valueDiff card__valueDiff--positive">{{ formattedRankDiff }}</h1>
-    </section>
-    <section v-else-if="rank - lastRank > 0" className="card__valueDiff-container league__number">
-      <svg class="card__valueDiff--negative card__valueDiff__icon" fill="currentColor" stroke="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/></svg>
-      <h1 className="card__valueDiff card__valueDiff--negative">{{ formattedRank }}</h1>
-    </section>
-    <section v-else className="card__valueDiff-container league__number">
-      <h1 className="card__valueDiff card__valueDiff--neutral">{{ '-' }}</h1>
-    </section>
+    <section className="leagues-container main__card">
+      <section className="league-container">
+        <h1 className="leagues__title">Name</h1>
+        <h1 className="leagues__title">Rank</h1>
+        <h1 className="leagues__title">Previous Rank</h1>
+        <h1 className="leagues__title">Rank Difference</h1>
+        <h1 className="leagues__title">Points</h1>
+        <h1 className="leagues__title">Total Points</h1>
+      </section>
+      <li v-for="member in league.standings.results" :key="member.id">
+        <LeagueMember 
+          :teamName="member.entry_name" 
+          :managerName="member.player_name"
+          :rank="member.rank"
+          :lastRank="member.last_rank"
+          :points="member.event_total"
+          :totalPoints="member.total"
+        />
+      </li>
   </section>
 </template>
 
 <script>
-import { formatNumber } from '../helpers'
+import LeagueMember from './LeagueMember'
 
 export default {
   props: {
-    name: String,
-    rank: Number,
-    lastRank: Number
+    league: Object
   },
-  data: function() {
-    return {
-      formattedRank: formatNumber(this.rank),
-      formattedLastRank: formatNumber(this.lastRank),
-      formattedRankDiff: formatNumber((this.rank - this.lastRank) * -1)
-    }
+  components: {
+    LeagueMember
   }
 }
 </script>

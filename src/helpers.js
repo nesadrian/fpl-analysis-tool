@@ -29,9 +29,9 @@ const sortLeaguesPrivate = leagues => leagues.sort(league => league.league_type 
 
 const getAllChips = usedChips => {
   const chipNames = ['wildcard', 'benchboost', 'freehit', 'triplecaptain']
-  const chips = usedChips
+  const chips = [...usedChips]
   chipNames.forEach(chipName => {
-    usedChips.some(chip => chip.name !== chipName) && (
+    chips.some(chip => chip.name !== chipName) && (
       chips.push({
         name: chipName,
         time: undefined,
