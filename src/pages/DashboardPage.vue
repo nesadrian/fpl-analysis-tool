@@ -21,8 +21,8 @@
       <template v-else-if="clickedCard === 'Gameweek Points'">
         <LineChart :chartSeries="this.dataGameweekPointsChart.series" :chartOptions="this.dataGameweekPointsChart.chartOptions"/>
       </template>
-      <Leagues :leagues="this.dataClassicLeagues"/>
-      <Chips :chips="this.dataChips" />
+      <LeaguesList :leagues="this.dataClassicLeagues"/>
+      <ChipsList :chips="this.dataChips" />
     </section>
   </main>
 </template>
@@ -31,8 +31,8 @@
 import Card from '../components/Card'
 import LineChart from '../components/LineChart'
 import PageTitle from '../components/PageTitle'
-import Leagues from '../components/Leagues'
-import Chips from '../components/Chips'
+import LeaguesList from '../components/LeaguesList'
+import ChipsList from '../components/ChipsList'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
 import { getChartData, sortLeaguesPrivate, getAllChips } from '../helpers'
 
@@ -48,8 +48,8 @@ export default {
     PageTitle,
     Card,
     MoonLoader,
-    Leagues,
-    Chips,
+    LeaguesList,
+    ChipsList,
     LineChart
   },
   props: {

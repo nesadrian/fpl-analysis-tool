@@ -1,5 +1,11 @@
 import { createStore } from "vuex";
-import { getDataGeneral, getDataManagerGeneral, getDataManagerHistory, getDataFixtures } from './api'
+import { 
+  getDataGeneral,
+  getDataManagerGeneral,
+  getDataManagerHistory,
+  getDataFixtures,
+  getDataLeague
+} from './api'
 
 export default createStore({
   state () {
@@ -8,6 +14,7 @@ export default createStore({
       dataManagerGeneral: undefined,
       dataManagerHistory: undefined,
       dataFixtures: undefined,
+      dataLeagues: []
     }
   },
   actions: {
@@ -27,6 +34,10 @@ export default createStore({
       const data = await getDataFixtures();
       context.commit('setDataFixtures', data);
     },
+    async fetchDataLeague (context, id) {
+      const data = await getDataLeague(id);
+      context.commit('setDataLeagues', data);
+    },
   },
   mutations: {
     setDataGeneral (state, data) {
@@ -41,6 +52,13 @@ export default createStore({
     setDataFixtures (state, data) {
       state.dataFixtures = data;
     },
+    setDataLeagues (state, data) {
+      if(!state.dataLeagues.some(league => league.id === data.id)) {
+        const leagues = state.dataLeagues
+        leagues.push(data)
+        this.state.dataLeagues = leagues
+      }
+    }
   },
   getters: {
     getDataGeneral (state) {
@@ -55,5 +73,8 @@ export default createStore({
     getDataFixtures (state) {
       return state.dataFixtures;
     },
+    getDataLeague: (state) => (id) => {
+      return state.dataLeagues.find(obj => obj.league.id == id)
+    }
   }
 });

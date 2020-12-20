@@ -5,14 +5,14 @@
   <main v-else className="main-container">
     <PageTitle text="Leagues" />
     <section>
-      <Leagues :leagues="this.dataClassicLeagues"/>
+      <LeaguesList :leagues="this.dataClassicLeagues"/>
     </section>
   </main>
 </template>
 
 <script>
 import PageTitle from '../components/PageTitle'
-import Leagues from '../components/Leagues'
+import LeaguesList from '../components/LeaguesList'
 import { sortLeaguesPrivate } from '../helpers'
 import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
 
@@ -24,7 +24,7 @@ export default {
   },
   components: {
     PageTitle,
-    Leagues,
+    LeaguesList,
     MoonLoader
   },
   methods: {
