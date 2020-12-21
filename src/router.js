@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import DashboardPage from "./pages/DashboardPage";
 import LeaguesPage from "./pages/LeaguesPage";
 import LeaguePage from './pages/LeaguePage'
+import LoginPage from './pages/LoginPage'
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: "/leagues/:id",
     name: "League",
     component: LeaguePage,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: LoginPage,
   },
 ];
 
