@@ -1,6 +1,9 @@
 <template>
   <main class="main-container main-container--login">
-    <h1>Login</h1>
+    <form>
+      <input type="text"/>
+      <button type="submit">Login</button>
+    </form>
   </main>
 </template>
 
