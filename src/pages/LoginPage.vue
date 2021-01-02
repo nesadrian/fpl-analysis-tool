@@ -1,8 +1,8 @@
 <template>
   <main class="main-container main-container--login">
-    <form @submit="handleSubmit">
-      <input v-model="inputText" type="text" placeholder="Type manager id..."/>
-      <button type="submit">Login</button>
+    <form class="login__form" @submit="handleSubmit">
+      <input class="login__form__text" v-model="inputText" type="text" placeholder="Type manager id..."/>
+      <button class="login__form__button" type="submit">Login</button>
     </form>
   </main>
 </template>
