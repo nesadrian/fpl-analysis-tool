@@ -1,3 +1,5 @@
+import { getDataManagerGeneral } from './api';
+
 const formatNumber = num => num.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
 const getChartData = (xData, yData, reversed, min, max) => ({
@@ -31,7 +33,7 @@ const getAllChips = usedChips => {
   const chipNames = ['wildcard', 'benchboost', 'freehit', 'triplecaptain']
   const chips = [...usedChips]
   chipNames.forEach(chipName => {
-    chips.some(chip => chip.name !== chipName) && (
+    usedChips.some(chip => chip.name !== chipName) && (
       chips.push({
         name: chipName,
         time: undefined,
@@ -57,10 +59,17 @@ const formatChipName = chipName => {
   }
 }
 
+const isValidManagerId = async id => {
+  const res = await getDataManagerGeneral(id);
+  if(res.details) return false
+  return true
+}
+
 export {
   getChartData,
   sortLeaguesPrivate,
   getAllChips,
   formatChipName,
-  formatNumber
+  formatNumber,
+  isValidManagerId
 }
